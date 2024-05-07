@@ -20,5 +20,10 @@ public class MyBatisApplication5 {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         List<User> userList = userMapper.findAllLazy();
         userList.forEach(System.out::println);
+
+//        System.out.println("------------------------");
+//
+//        userList = userMapper.findAllByDepartmentId("18ec781fbefd727923b0d35740b177ab");
+//        userList.forEach(System.out::println);
     }
 }

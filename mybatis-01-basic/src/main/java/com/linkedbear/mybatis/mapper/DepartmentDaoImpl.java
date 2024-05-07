@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DepartmentDaoImpl implements DepartmentDao {
     
-    private SqlSessionFactory sqlSessionFactory;
+    private final SqlSessionFactory sqlSessionFactory;
     
     public DepartmentDaoImpl(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;

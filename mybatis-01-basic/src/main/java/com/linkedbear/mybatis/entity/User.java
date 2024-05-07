@@ -18,6 +18,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", department=" + department + '}';
+
+//        return "User{" + "id='" + id + '\'' + ", name='" + name + '\'';
     }
     
     @Override

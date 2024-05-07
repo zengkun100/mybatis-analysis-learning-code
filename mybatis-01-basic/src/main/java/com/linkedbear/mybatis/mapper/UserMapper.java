@@ -9,4 +9,6 @@ public interface UserMapper {
     List<User> findAll();
 
     List<User> findAllLazy();
+
+    List<User> findAllByDepartmentId(String departmentId);
 }

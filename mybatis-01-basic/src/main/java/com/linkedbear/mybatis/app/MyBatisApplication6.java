@@ -19,6 +19,6 @@ public class MyBatisApplication6 {
         DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
         Department department = departmentMapper.findById("18ec781fbefd727923b0d35740b177ab");
         System.out.println(department);
-        System.out.println(department.getUsers());
+//        System.out.println(department.getUsers());
     }
 }

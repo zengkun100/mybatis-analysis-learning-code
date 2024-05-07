@@ -23,6 +23,7 @@
         delete from tbl_department where id = #{id}
     </delete>
 
+    <!-- 注意resultType和resultMap的区别 -->
     <select id="findAll" resultMap="department">
         select * from tbl_department
     </select>
