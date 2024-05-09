@@ -12,7 +12,7 @@ public interface UserMapper {
 
     List<User> findAllUseTypeHandler();
     
-    int saveUser(User user);
+//    int saveUser(User user);
     
     List<User> findAllByDepartmentId(String departmentId);
 }
