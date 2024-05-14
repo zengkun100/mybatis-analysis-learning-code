@@ -15,10 +15,10 @@ public class MyBatisApplication4 {
     public static void main(String[] args) throws Exception {
         InputStream xml = Resources.getResourceAsStream("mybatis-config-3.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-    
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = userMapper.findAll();
-        userList.forEach(System.out::println);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<User> userList = userMapper.findAll();
+            userList.forEach(System.out::println);
+        }
     }
 }

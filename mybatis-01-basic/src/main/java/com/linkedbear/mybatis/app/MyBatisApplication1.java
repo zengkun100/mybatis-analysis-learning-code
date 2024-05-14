@@ -14,8 +14,9 @@ public class MyBatisApplication1 {
     public static void main(String[] args) throws Exception {
         InputStream xml = Resources.getResourceAsStream("mybatis-config-1.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        List<Department> departmentList = sqlSession.selectList("departmentMapper.findAll");
-        departmentList.forEach(System.out::println);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            List<Department> departmentList = sqlSession.selectList("departmentMapper.findAll");
+            departmentList.forEach(System.out::println);
+        }
     }
 }
