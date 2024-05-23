@@ -9,9 +9,12 @@
         <result property="name" column="name"/>
         <result property="age" column="age"/>
         <result property="birthday" column="birthday"/>
+        <!--
+        association 表达1对1
+        -->
         <association property="department" javaType="com.linkedbear.mybatis.entity.Department">
-            <id property="id" column="department_id"/>
-            <result property="name" column="department_name"/>
+            <id property="id" column="dep_id"/>
+            <result property="name" column="dep_name"/>
         </association>
     </resultMap>
 
@@ -26,16 +29,26 @@
                      select="com.linkedbear.mybatis.mapper.DepartmentMapper.findById" column="department_id"/>
     </resultMap>
 
+    <!--
+    这个是显示的用join查出来的，所以不存在SQL爆炸的问题
+    -->
     <select id="findAll" resultMap="user">
-        select usr.*, dep.name as department_name
+        select usr.*, dep.name as dep_name, dep.id as dep_id
         from tbl_user usr
         left join tbl_department dep on usr.department_id = dep.id
     </select>
 
+    <!--
+    想要让延迟加载生效，需要在mybatis配置文件里打开 <setting name="lazyLoadingEnabled" value="true"/>
+    否则，针对每个user，会自动做一次针对Department的findById查询动作
+    -->
     <select id="findAllLazy" resultMap="userlazy">
         select * from tbl_user
     </select>
 
+    <!--
+    这个就不涉及到级联查询了
+    -->
     <select id="findAllByDepartmentId" parameterType="string" resultType="com.linkedbear.mybatis.entity.User">
         select * from tbl_user where department_id = #{departmentId}
     </select>

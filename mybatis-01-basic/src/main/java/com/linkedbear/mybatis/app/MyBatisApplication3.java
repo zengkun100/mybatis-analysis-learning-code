@@ -18,10 +18,6 @@ public class MyBatisApplication3 {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-
-
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-
         DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
         Department department = departmentMapper.findById("18ec781fbefd727923b0d35740b177ab");
         System.out.println(department);

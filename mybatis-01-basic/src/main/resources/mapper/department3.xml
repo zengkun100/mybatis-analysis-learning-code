@@ -7,6 +7,13 @@
         <id property="id" column="id"/>
         <id property="name" column="name"/>
         <id property="tel" column="tel"/>
+        <!--
+        这种级联查询，使用不当会造成很大的性能问题。如果一次性查出来大量的department，针对每个department，都会再发起一次
+        对user表的findAllByDepartmentId操作，导致SQL查询量暴增
+         -->
+        <!--
+        collection表达1对多
+        -->
         <collection property="users" ofType="com.linkedbear.mybatis.entity.User"
                     select="com.linkedbear.mybatis.mapper.UserMapper.findAllByDepartmentId" column="id"/>
     </resultMap>

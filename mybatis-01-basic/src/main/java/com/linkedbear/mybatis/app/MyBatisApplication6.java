@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.List;
 
 public class MyBatisApplication6 {
     
@@ -16,8 +17,13 @@ public class MyBatisApplication6 {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+/*
             Department department = departmentMapper.findById("18ec781fbefd727923b0d35740b177ab");
             System.out.println(department);
+*/
+
+            List<Department> departmentList = departmentMapper.findAll();
+//            departmentList.forEach(System.out::println);
         }
     }
 }
