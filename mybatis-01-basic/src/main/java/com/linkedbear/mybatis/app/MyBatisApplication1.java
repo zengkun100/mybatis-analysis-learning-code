@@ -14,9 +14,10 @@ public class MyBatisApplication1 {
     public static void main(String[] args) throws Exception {
         InputStream xml = Resources.getResourceAsStream("mybatis-config-1.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
+        // SqlSession是mybatis对外提供的API层
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             // 用selectList这种写法，要写完整的namespace+id
-            List<Department> departmentList = sqlSession.selectList("com.linkedbear.mybatis.mapper.DepartmentMapper.findAll");
+            List<Department> departmentList = sqlSession.selectList("justSomeNamespace.findAll");
             departmentList.forEach(System.out::println);
         }
     }

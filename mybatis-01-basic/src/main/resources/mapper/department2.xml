@@ -2,8 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 与接口的全限定名称相同-->
 <mapper namespace="com.linkedbear.mybatis.mapper.DepartmentMapper">
 
+    <!-- id 与接口中的方法名称相同-->
     <insert id="insert" parameterType="com.linkedbear.mybatis.entity.Department">
         insert into tbl_department (id, name, tel) values (#{id}, #{name}, #{tel})
     </insert>
@@ -12,10 +14,12 @@
         update tbl_department set name = #{name}, tel = #{tel} where id = #{id}
     </update>
 
+    <!--parameterType与接口的参数类型相同-->
     <delete id="deleteById" parameterType="string">
         delete from tbl_department where id = #{id}
     </delete>
 
+    <!--resultType与接口的返回值类型相同-->
     <select id="findAll" resultType="com.linkedbear.mybatis.entity.Department">
         select * from tbl_department
     </select>

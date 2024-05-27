@@ -22,7 +22,10 @@ public class MyBatisApplication6 {
             System.out.println(department);
 */
 
-            List<Department> departmentList = departmentMapper.findAll();
+//            List<Department> departmentList = departmentMapper.findAll();
+
+            Department department = departmentMapper.findById("53e3803ebbf4f97968e0253e5ad4cc83");
+            System.out.println(department.getName());
 //            departmentList.forEach(System.out::println);
         }
     }

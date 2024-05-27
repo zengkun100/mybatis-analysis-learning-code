@@ -35,7 +35,8 @@
         select * from tbl_department
     </select>
 
-    <select id="findById" parameterType="string" resultMap="department">
+    <!--如果这里写resultType，那么返回结果里就不涉及到对users的处理，所以返回的users就是null。不像department那个map里，表达了如何做级联查询-->
+    <select id="findById" parameterType="string" resultType="com.linkedbear.mybatis.entity.Department">
         select * from tbl_department where id = #{id}
     </select>
 </mapper>
