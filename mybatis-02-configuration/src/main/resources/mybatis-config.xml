@@ -3,12 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="jdbc.properties">
+    <properties resource="jdbc.properties" />
+    <!--resource="jdbc.properties"-->
+    <!--<properties>
         <property name="jdbc.driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/mybatis_2?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC"/>
+        <property name="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/mybatis?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC"/>
         <property name="jdbc.username" value="root"/>
         <property name="jdbc.password" value="0505oxox"/>
-    </properties>
+    </properties>-->
     
     <settings>
         <setting name="logImpl" value="LOG4J"/>

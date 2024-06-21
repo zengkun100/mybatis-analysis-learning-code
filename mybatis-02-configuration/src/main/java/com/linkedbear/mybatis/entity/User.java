@@ -15,7 +15,7 @@ public class User {
     
     private Department department;
     
-    private Department department_id;
+    private String department_id;
     
     @Override
     public String toString() {
@@ -77,11 +77,11 @@ public class User {
         this.department = department;
     }
     
-    public Department getDepartment_id() {
+    public String getDepartment_id() {
         return department_id;
     }
     
-    public void setDepartment_id(Department department_id) {
+    public void setDepartment_id(String department_id) {
         this.department_id = department_id;
     }
 }
