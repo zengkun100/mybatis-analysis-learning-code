@@ -20,7 +20,7 @@ public class Department implements Serializable {
     public Department() {
     }
     
-    public Department(@Param("idd") String id) {
+    public Department(@Param("idx") String id) {
         this.id = id;
     }
     

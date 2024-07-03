@@ -17,7 +17,7 @@ public class User implements Serializable {
     
     private Department department;
     
-    private Department department_id;
+//    private Department department_id;
     
     @Override
     public String toString() {
@@ -79,11 +79,11 @@ public class User implements Serializable {
         this.department = department;
     }
     
-    public Department getDepartment_id() {
-        return department_id;
-    }
+//    public Department getDepartment_id() {
+//        return department_id;
+//    }
     
-    public void setDepartment_id(Department department_id) {
-        this.department_id = department_id;
-    }
+//    public void setDepartment_id(Department department_id) {
+//        this.department_id = department_id;
+//    }
 }

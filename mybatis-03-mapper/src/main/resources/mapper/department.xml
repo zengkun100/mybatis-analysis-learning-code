@@ -17,7 +17,7 @@
 
     <resultMap id="departmentWithConstructor" type="com.linkedbear.mybatis.entity.Department">
         <constructor>
-            <idArg column="id" javaType="String" name="idd"/>
+            <idArg column="id" javaType="String" name="idx"/>
             <!--<arg column="name" javaType="String"/>-->
         </constructor>
         <!--<id property="id" column="id"/>-->

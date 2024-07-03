@@ -13,14 +13,15 @@ public class GeneratedKeysApplication {
     public static void main(String[] args) throws Exception {
         InputStream xml = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-    
-        Department department = new Department();
-        department.setName("hahaha");
-        department.setTel("12345");
-        sqlSession.insert("test.save", department);
-        sqlSession.commit();
-    
+        Department department;
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            department = new Department();
+            department.setName("hahaha");
+            department.setTel("12345");
+            sqlSession.insert("test.save", department);
+            sqlSession.commit();
+        }
+
         System.out.println(department);
     }
 }

@@ -19,15 +19,16 @@ public class ResultMapApplication {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         
-        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+        /*DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
         List<Department> departmentList = departmentMapper.findAll();
-        departmentList.forEach(System.out::println);
+        departmentList.forEach(System.out::println);*/
     
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         List<User> userList = userMapper.findAll();
         userList.forEach(System.out::println);
-        
+
+        /*
         List<User> userList2 = sqlSession.selectList("com.linkedbear.mybatis.mapper.UserMapper.findAllUseDiscriminator");
-        userList2.forEach(System.out::println);
+        userList2.forEach(System.out::println);*/
     }
 }
