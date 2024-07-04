@@ -30,19 +30,21 @@ public class SelectUseCacheApplication {
         sqlSession.close();
 
         SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        // 缓存到2级之后，即便是一个新的SQL Session，也能hit
         DepartmentMapper departmentMapper2 = sqlSession2.getMapper(DepartmentMapper.class);
         Department department3 = departmentMapper2.findById("18ec781fbefd727923b0d35740b177ab");
-        // SqlSession查回来的department，不是同一个对象了
+        // 但是，从2级缓存查回来的department，不是同一个对象了。是需要反序列化的
         System.out.println("department2 == department3 : " + (department2 == department3));
         departmentMapper2.findAll();
 
         UserMapper userMapper = sqlSession2.getMapper(UserMapper.class);
-        // flushCache 会清除全局一级缓存，以及本 namespace 下的二级缓存。
-        userMapper.cleanCache();
+        // flushCache 会清除所有的一级缓存，以及本 namespace 下的二级缓存。如果不在这里做一次flush的话，后面的findAll操作也会命中cache，并不会发起真的SQL
+//        userMapper.cleanCache();
         System.out.println("==================cleanCache====================");
-        
+
+        // 因为department的2级缓存还在，所以可以命中，没有什么SQL发起
         Department department4 = departmentMapper2.findById("18ec781fbefd727923b0d35740b177ab");
-        // 这里竟然是false，因为mybatis的缓存是二级缓存，二级缓存是持久化的，所以这里hit了
+        // 同样的，从2级缓存查回来的department，不是同一个对象了。是需要反序列化的
         System.out.println("department3 == department4 : " + (department3 == department4));
         departmentMapper2.findAll();
     
