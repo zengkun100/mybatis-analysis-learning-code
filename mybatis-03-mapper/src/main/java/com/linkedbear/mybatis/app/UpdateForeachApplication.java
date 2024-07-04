@@ -23,7 +23,8 @@ public class UpdateForeachApplication {
         department.setId("53e3803ebbf4f97968e0253e5ad4cc83");
         department.setName("测试部");
         department.setTel("");
-    
+
+        // bean转map
         BeanMap beanMap = BeanMap.create(department);
         System.out.println(beanMap);
         Map<Object, Object> departmentMap = new HashMap<>(beanMap);
