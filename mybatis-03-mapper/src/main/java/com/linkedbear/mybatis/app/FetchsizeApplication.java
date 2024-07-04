@@ -15,10 +15,11 @@ public class FetchsizeApplication {
     public static void main(String[] args) throws Exception {
         InputStream xml = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(xml);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        
-        DepartmentMapper departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
-        List<Department> departmentList = departmentMapper.findAll();
-        departmentList.forEach(System.out::println);
+        DepartmentMapper departmentMapper;
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            departmentMapper = sqlSession.getMapper(DepartmentMapper.class);
+            List<Department> departmentList = departmentMapper.findAll();
+            departmentList.forEach(System.out::println);
+        }
     }
 }

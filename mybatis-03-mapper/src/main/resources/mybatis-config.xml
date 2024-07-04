@@ -5,6 +5,7 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!-- 这个默认值就是true，但是需要在每个mapper里面单独打开cache标签，才能对那个mapper的namespace生效-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
 
